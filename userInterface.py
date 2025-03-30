@@ -1,4 +1,6 @@
-# userInterface.py
+import item
+import borrow
+import event
 
 def show_menu():
     print("\nWhat would you like to do?")
@@ -16,17 +18,22 @@ def main():
     while True:
         show_menu()
         choice = input("Enter the number of your choice: ").strip()
-
         if choice == "1":
             print("You selected: Find an item in the library.")
+            item.searchItem()
         elif choice == "2":
             print("You selected: Borrow an item from the library.")
+            borrow.borrowItem()
         elif choice == "3":
             print("You selected: Return a borrowed item.")
+            borrow.returnItem()
         elif choice == "4":
             print("You selected: Donate an item to the library.")
+            item.addItem()
+            print("Thank you very much for your donation!")
         elif choice == "5":
             print("You selected: Find an event in the library.")
+            event.searchEvent()
         elif choice == "6":
             print("You selected: Register for an event in the library.")
         elif choice == "7":
