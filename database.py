@@ -50,12 +50,12 @@ def createTables():
     CREATE TABLE IF NOT EXISTS Event (
         EventID INTEGER PRIMARY KEY,
         Title TEXT,
-        Type TEXT,
         Description TEXT,
-        TargetAudience TEXT,
         Date TEXT,
         StartTime TEXT,
         EndTime TEXT,
+        Type TEXT,
+        TargetAudience TEXT,
         RoomID INTEGER,
         FOREIGN KEY (RoomID) REFERENCES Room(RoomID)
     );
