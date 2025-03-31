@@ -1,6 +1,7 @@
 import item
 import borrow
 import event
+import volunteer
 
 def show_menu():
     print("\nWhat would you like to do?")
@@ -36,8 +37,10 @@ def main():
             event.searchEvent()
         elif choice == "6":
             print("You selected: Register for an event in the library.")
+            event.registerForEvent()
         elif choice == "7":
             print("You selected: Volunteer for the library.")
+            volunteer.volunteerForEvent()
         elif choice == "8":
             print("You selected: Ask for help from a librarian.")
         elif choice == "9":

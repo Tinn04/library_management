@@ -48,49 +48,61 @@ def createTables():
     # Creating table for Event
     cursor.executescript("""
     CREATE TABLE IF NOT EXISTS Event (
-        EventID INTEGER PRIMARY KEY,
-        Title TEXT,
-        Description TEXT,
-        Date TEXT,
-        StartTime TEXT,
-        EndTime TEXT,
-        Type TEXT,
-        TargetAudience TEXT,
-        RoomID INTEGER,
-        FOREIGN KEY (RoomID) REFERENCES Room(RoomID)
+        eventID INTEGER PRIMARY KEY,
+        title TEXT,
+        description TEXT,
+        date TEXT,
+        startTime TEXT,
+        endTime TEXT,
+        type TEXT,
+        targetAudience TEXT,
+        roomID INTEGER,
+        FOREIGN KEY (roomID) REFERENCES Room(roomID)
     );
     """)
 
     # Creating table for Room
     cursor.executescript("""
     CREATE TABLE IF NOT EXISTS Room (
-        RoomID INTEGER PRIMARY KEY,
-        RoomName TEXT,
-        Capacity INTEGER
+        roomID INTEGER PRIMARY KEY,
+        roomName TEXT,
+        capacity INTEGER
     );
     """)
 
     # Creating table for Attendance
     cursor.executescript("""
     CREATE TABLE IF NOT EXISTS Attendance (
-        EventID INTEGER,
-        UserID INTEGER,
-        PRIMARY KEY (EventID, UserID),
-        FOREIGN KEY (EventID) REFERENCES Event(EventID),
-        FOREIGN KEY (UserID) REFERENCES User(UserID)
+        eventID INTEGER,
+        userID INTEGER,
+        PRIMARY KEY (eventID, userID),
+        FOREIGN KEY (eventID) REFERENCES Event(eventID),
+        FOREIGN KEY (userID) REFERENCES User(userID)
     );
     """)
 
     # Creating table for Employee
     cursor.executescript("""
     CREATE TABLE IF NOT EXISTS Employee (
-        EmployeeID INTEGER PRIMARY KEY,
+        employeeID INTEGER PRIMARY KEY,
         firstName TEXT NOT NULL,
         lastName TEXT NOT NULL,
-        Role TEXT,
-        HireDate TEXT,
-        Email TEXT,
-        Phone TEXT
+        role TEXT,
+        hireDate TEXT,
+        email TEXT,
+        phone TEXT
+    );
+    """)
+
+    # Creating table for Volunteer
+    cursor.executescript("""
+    CREATE TABLE Volunteer (
+        userID INTEGER,
+        eventID INTEGER,
+        role TEXT,
+        PRIMARY KEY (userID, eventID),
+        FOREIGN KEY (userID) REFERENCES User(userID),
+        FOREIGN KEY (eventID) REFERENCES Event(eventID)
     );
     """)
 
