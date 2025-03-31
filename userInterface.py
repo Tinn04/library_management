@@ -2,6 +2,7 @@ import item
 import borrow
 import event
 import volunteer
+import employee
 
 def show_menu():
     print("\nWhat would you like to do?")
@@ -43,6 +44,7 @@ def main():
             volunteer.volunteerForEvent()
         elif choice == "8":
             print("You selected: Ask for help from a librarian.")
+            employee.helpFromLibrarian()
         elif choice == "9":
             print("Exiting the program. Goodbye!")
             break

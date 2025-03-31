@@ -96,7 +96,7 @@ def createTables():
 
     # Creating table for Volunteer
     cursor.executescript("""
-    CREATE TABLE Volunteer (
+    CREATE TABLE IF NOT EXISTS Volunteer (
         userID INTEGER,
         eventID INTEGER,
         role TEXT,
