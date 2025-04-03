@@ -48,7 +48,7 @@ def returnItem():
     else:
         confirm = input("Type 'CONFIRM' to return the item or 'EXIT' to cancel: ")
         if confirm.upper() == "CONFIRM":
-            returnDate = input("Enter today's date: ")
+            returnDate = input("Enter today's date (YYYY-MM-DD): ")
             cursor.execute("""
                 UPDATE Borrow
                 SET returnDate = ?
@@ -56,5 +56,7 @@ def returnItem():
             """, (returnDate, itemID))
             conn.commit()
             print("Item successfully returned.")
-        else:
+        elif confirm.upper() == "EXIT":
             print("Return cancelled.")
+        else:
+            print("Invalid entry. Return cancelled.")

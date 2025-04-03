@@ -5,7 +5,7 @@ import volunteer
 import employee
 
 def show_menu():
-    print("\nWhat would you like to do?")
+    print("\nWhat would you like to do? Enter a number from 1 to 9:")
     print("1. Find an item in the library")
     print("2. Borrow an item from the library")
     print("3. Return a borrowed item")
