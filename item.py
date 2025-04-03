@@ -20,13 +20,13 @@ def addItem():
     cursor = conn.cursor()
 
     # Gather all the necessary information
-    # itemID and status will automatically be generated (assumed to be "Available" for status)
+    # itemID  will automatically be generated
     title = input("Enter item title: ")
     format = input("Enter item format (Book, CD, etc.): ")
     author = input("Enter item author: ")
     publisher = input("Enter publisher name: ")
     publishDate = input("Enter publish date (YYYY-MM-DD): ")
-    status = "Available"
+    status = input("Enter status of item (Available, Borrowed, Reserved, Archived, FutureItem): ")
 
     cursor.execute("SELECT MAX(itemID) FROM Item")
     previousID = cursor.fetchone()[0]

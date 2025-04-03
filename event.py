@@ -29,7 +29,7 @@ def searchEvent():
     print("\nSearch Event By:")
     print("1. Event ID")
     print("2. Event Name")
-    choice = input("Enter your choice: ")
+    choice = input("Enter your choice (1 or 2): ")
 
     if choice == '1':
         eventID = input("Enter Event ID: ")
@@ -79,7 +79,7 @@ def searchEvent():
             else:
                 print("Invalid selection.")
     else:
-        print("Invalid choice.")
+        print("Invalid entry.")
     conn.close()
 
 def registerForEvent():
@@ -88,6 +88,24 @@ def registerForEvent():
 
     userID = input("Enter your User ID: ").strip()
     eventID = input("Enter Event ID to register for: ").strip()
+
+    # checks if entries are valid
+    if not userID.isdigit() or not eventID.isdigit():
+        print("Error: User ID and Event ID must be numbers.")
+        conn.close()
+        return
+
+    cursor.execute("SELECT 1 FROM Event WHERE eventID = ?", (eventID,))
+    if not cursor.fetchone():
+        print("Error: Event ID not found. Please enter a valid event ID.")
+        conn.close()
+        return
+
+    cursor.execute("SELECT 1 FROM User WHERE userID = ?", (userID,))
+    if not cursor.fetchone():
+        print("Error: User ID not found. Please enter a valid event ID.")
+        conn.close()
+        return
 
     # Checks if the user is already registered or not
     cursor.execute("SELECT * FROM Attendance WHERE userID = ? AND eventID = ?", (userID, eventID))

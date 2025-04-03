@@ -12,6 +12,11 @@ def volunteerForEvent():
     eventID = input("Enter your Event ID: ").strip()
     role = input("Enter your role (Helper, Leader, Guide, Translator, etc): ").strip()
 
+    if not userID.isdigit() or not eventID.isdigit():
+        print("Error: User ID and Event ID must be numbers.")
+        conn.close()
+        return
+
     # Check if user is already volunteering for this event
     cursor.execute("SELECT * FROM Volunteer WHERE userID = ? AND eventID = ?", (userID, eventID))
     if cursor.fetchone():
